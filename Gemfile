@@ -53,3 +53,7 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 end
 
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.2"
