@@ -9,4 +9,5 @@ class User < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :challenges
+  has_many :submissions
 end
