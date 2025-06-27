@@ -5,19 +5,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   private
   def respond_with(resource, _opts = {})
-    puts 'RRRRR'
+    puts "RRRRR"
     puts request.method
-    puts 'RRRRR'
-    if request.method == 'POST' && resource.persisted?
+    puts "RRRRR"
+    if request.method == "POST" && resource.persisted?
       render json: {
         code: 200,
-        message: 'Signed up successfully.',
+        message: "Signed up successfully.",
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }, status: :ok
-    elsif request.method == 'DELETE'      
+    elsif request.method == "DELETE"
       render json: {
         code: 200,
-        message: 'Account deleted successfully.'
+        message: "Account deleted successfully."
       }, status: :ok
     else
       render json: {
@@ -25,5 +25,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }, status: :unprocessable_entity
     end
   end
-  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_17_073653) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_27_182522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,20 +22,43 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_17_073653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.text "image_url"
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "challenge_id", null: false
+    t.string "title"
+    t.text "description"
+    t.text "starter_code"
+    t.text "test_cases"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "level"
+    t.integer "points", default: 0
+    t.index ["challenge_id"], name: "index_questions_on_challenge_id"
   end
 
   create_table "submissions", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "challenge_id", null: false
     t.text "code"
     t.string "status"
     t.text "result"
-    t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["challenge_id"], name: "index_submissions_on_challenge_id"
+    t.bigint "question_id", null: false
+    t.index ["question_id"], name: "index_submissions_on_question_id"
     t.index ["user_id"], name: "index_submissions_on_user_id"
+  end
+
+  create_table "test_cases", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.text "input"
+    t.text "expect_output"
+    t.boolean "is_hidden", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_test_cases_on_question_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,12 +70,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_17_073653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jti", null: false
+    t.integer "total_points", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "challenges", "users"
-  add_foreign_key "submissions", "challenges"
+  add_foreign_key "questions", "challenges"
+  add_foreign_key "submissions", "questions"
   add_foreign_key "submissions", "users"
+  add_foreign_key "test_cases", "questions"
 end

@@ -5,7 +5,6 @@ class CreateChallenges < ActiveRecord::Migration[7.2]
       t.text :description, null: false
       t.date :start_date, null: false
       t.date :end_date, null: false
-
       t.timestamps
     end
   end
