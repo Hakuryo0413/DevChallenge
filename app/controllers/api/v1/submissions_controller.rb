@@ -7,31 +7,34 @@ module Api
 
             def index
                 @submissions = Submission.all
-                render json: @submissions
+                render json: { code: 200, message: "All submissions", data: @submissions }, status: :ok
             end
 
             def create
                 @submission = @question.submissions.build(submission_params.merge(user: current_user))
                 if @submission.save
-                    render json: { message: "Submission created successfully", data: @submission }
+                  render json: { message: "Submission created successfully", data: @submission }, status: :ok
                 else
-                    render json: { message: "Submission created fail", data: @submission.errors }
+                  render json: {
+                    message: "Submission creation failed",
+                    errors: @submission.errors.full_messages
+                  }, status: :unprocessable_entity
                 end
-            end
+              end
+              
 
             private
                 def set_question
                     @question = Question.find(params[:question_id])
+                    return render json: { message: "Question not found" }, status: :not_found unless @question
+
                 end
 
                 def submission_params
                     params.require(:submission).permit(:code, :status)
                 end
 
-                def add_points_if_accepted
-                  return unless status == "Accepted"
-                  user.increment!(:total_points, question.points)
-                end
+               
         end
     end
 end

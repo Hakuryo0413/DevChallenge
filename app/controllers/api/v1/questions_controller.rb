@@ -18,9 +18,9 @@ module Api
             def create
                 @question = @challenge.questions.build(question_params)
                 if @question.save
-                    render json: { message: "Question created successfully", data: @question }
+                    render json: { message: "Question created successfully", data: @question }, status: :ok
                 else
-                    render json: { message: "Question created fail", data: @question.errors }
+                    render json: { message: "Question created fail", data: @question.errors.full_messages }, status: :unprocessable_entity
                 end
             end
 
@@ -28,16 +28,16 @@ module Api
                 if @question
                   render json: { message: "Question found", data: @question }
                 else
-                  render json: { message: "Question not found", data: @question.errors }
+                  render json: { message: "Question not found" }, status: :not_found
                 end
             end
 
             def destroy
                 # challenge = Challenge.find(params[:id])
                 if @question.destroy
-                    render json: { message: "Deleted successfully", data: @question }
+                    render json: { message: "Deleted successfully", data: @question }, status: :ok
                 else
-                    render json: { message: "Fail", data: @question.errors }
+                    render json: { message: "Failed to delete the resource.", data: @question.errors.full_messages }, status: :unprocessable_entity
                 end
             end
 
@@ -48,7 +48,7 @@ module Api
                 end
 
                 def set_question
-                    @question = Question.find(params[:id])
+                    @question = Question.find_by(id: params[:id])
                 end
 
                 def question_params

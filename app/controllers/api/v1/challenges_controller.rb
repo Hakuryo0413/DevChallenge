@@ -1,8 +1,8 @@
 module Api
     module V1
         class ChallengesController <ApplicationController
-            before_action :authenticate_user!, only: %i[ create update destroy]
-            before_action :set_challenge, only: %i[ show update destroy ]
+            before_action :authenticate_user!, only: %i[ create ]
+            before_action :set_challenge, only: %i[ show destroy ]
             before_action :authenrize_admin, only: %i[ create ]
             # GET api/v1/challenges#index
             def index
@@ -20,9 +20,9 @@ module Api
                 @challenge = current_user.challenges.build(challenges_params)
                 puts @challenge
                 if @challenge.save
-                    render json: { message: "Challenge created successfully", data: @challenge }
+                    render json: { message: "Challenge created successfully", data: @challenge }, status: :ok
                 else
-                    render json: { message: "Failed to save challenge", data: @challenge.errors }
+                    render json: { message: "Failed to save challenge", data: @challenge.errors }, status: :unprocessable_entity
                 end
             end
 
@@ -32,29 +32,21 @@ module Api
                 if @challenge
                   render json: { message: "Challenge found", data: @challenge }
                 else
-                  render json: { message: "Challenge not found", data: @challenge.errors }
-                end
-            end
-
-            # PATCH /api/v1/challenges/:id
-            def update
-                # challenge = Challenge.find(params[:id])
-                if @challenge.update(challenges_params)
-                    render json: { message: "Challenge found", data: @challenge }
-                else
-                    render json: { message: "Challenge not found", data: @challenge.errors }
+                  render json: { message: "Challenge not found" }, status: :not_found
                 end
             end
 
             # DELETE /api/v1/challenges/:id
             def destroy
-                # challenge = Challenge.find(params[:id])
-                if @challenge.destroy
-                    render json: { message: "Deleted successfully", data: @challenge }
+                if @challenge.nil?
+                  render json: { message: "Challenge not found" }, status: :not_found
+                elsif @challenge.destroy
+                  render json: { message: "Deleted successfully", data: @challenge }, status: :ok
                 else
-                    render json: { message: "Fail", data: @challenge.errors }
+                    render json: { message: "Failed to delete the resource.", data: @challenge.errors.full_messages }, status: :unprocessable_entity
                 end
             end
+
 
             private
 
@@ -63,7 +55,7 @@ module Api
                 end
 
                 def set_challenge
-                    @challenge = Challenge.find(params[:id])
+                    @challenge = Challenge.find_by(id: params[:id])
                 end
 
                 def challenges_params

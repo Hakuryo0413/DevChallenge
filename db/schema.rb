@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_27_182522) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_30_104912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,8 +41,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_27_182522) do
 
   create_table "submissions", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.text "code"
-    t.string "status"
+    t.text "code", null: false
+    t.string "status", null: false
     t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_27_182522) do
 
   create_table "test_cases", force: :cascade do |t|
     t.bigint "question_id", null: false
-    t.text "input"
-    t.text "expect_output"
+    t.text "input", null: false
+    t.text "expect_output", null: false
     t.boolean "is_hidden", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

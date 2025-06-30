@@ -1,7 +1,8 @@
 class Submission < ApplicationRecord
   belongs_to :user
   belongs_to :question
-
+  validates :code, presence: true
+  validates :status, presence: true
   after_create :add_points_if_accepted
   private
 

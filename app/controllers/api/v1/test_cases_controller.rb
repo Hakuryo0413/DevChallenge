@@ -18,9 +18,9 @@ module Api
             def create
                 @test_case = @question.test_cases.build(test_cases_params)
                 if @test_case.save
-                    render json: { message: "Testcase created successfully", data: @test_case }
+                    render json: { message: "Testcase created successfully", data: @test_case }, status: :ok
                 else
-                    render json: { message: "Testcase created fail", data: @test_case.errors }
+                    render json: { message: "Testcase created fail", data: @test_case.errors.full_messages }, status: :unprocessable_entity
                 end
             end
 
