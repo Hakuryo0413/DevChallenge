@@ -81,7 +81,7 @@ RSpec.describe Api::V1::ChallengesController, type: :request do
     context "when challenge deletion fails" do
       before do
         allow_any_instance_of(Challenge).to receive(:destroy).and_return(false)
-        allow_any_instance_of(Challenge).to receive_message_chain(:errors, :full_messages).and_return(["Cannot delete challenge"])
+        allow_any_instance_of(Challenge).to receive_message_chain(:errors, :full_messages).and_return([ "Cannot delete challenge" ])
         delete "/api/v1/challenges/#{challenge.id}", headers: headers
       end
 

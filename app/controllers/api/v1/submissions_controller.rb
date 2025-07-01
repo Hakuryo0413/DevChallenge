@@ -75,7 +75,7 @@ module Api
 
       def set_question
         @question = Question.find_by(id: params[:question_id])
-        return render json: { message: "Question not found" }, status: :not_found unless @question
+        render json: { message: "Question not found" }, status: :not_found unless @question
       end
 
       def submission_params

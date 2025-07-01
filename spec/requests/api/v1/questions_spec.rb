@@ -61,7 +61,7 @@ RSpec.describe "Questions API", type: :request do
     context "when delete fails" do
       before do
         allow_any_instance_of(Question).to receive(:destroy).and_return(false)
-        allow_any_instance_of(Question).to receive_message_chain(:errors, :full_messages).and_return(["Cannot delete question"])
+        allow_any_instance_of(Question).to receive_message_chain(:errors, :full_messages).and_return([ "Cannot delete question" ])
       end
 
       it "returns error" do

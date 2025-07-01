@@ -1,7 +1,7 @@
-require 'net/http'
-require 'uri'
-require 'json'
-require 'ostruct'
+require "net/http"
+require "uri"
+require "json"
+require "ostruct"
 
 class Judge0Service
   API_URL = "https://judge0-ce.p.rapidapi.com"

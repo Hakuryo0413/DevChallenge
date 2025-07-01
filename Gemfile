@@ -44,44 +44,43 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'dotenv'
+  gem "dotenv"
 
-  gem 'rspec-rails', '~> 7.1', '>= 7.1.1'
+  gem "rspec-rails", "~> 7.1", ">= 7.1.1"
 
-  gem 'factory_bot_rails', '~> 6.2'
+  gem "factory_bot_rails", "~> 6.2"
 
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 
-  gem 'shoulda-matchers', '~> 6.2'
+  gem "shoulda-matchers", "~> 6.2"
 
-  gem 'redis', '~> 5.3'
+  gem "redis", "~> 5.3"
 
-  gem 'vcr', '~> 6.1'
+  gem "vcr", "~> 6.1"
 
-  gem 'webmock', '~> 3.24'
+  gem "webmock", "~> 3.24"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  
+
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
   # gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 
-  gem 'rspec-rails', '~> 7.1', '>= 7.1.1'
+  gem "rspec-rails", "~> 7.1", ">= 7.1.1"
 
-  gem 'factory_bot_rails', '~> 6.2'
+  gem "factory_bot_rails", "~> 6.2"
 
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 
-  gem 'shoulda-matchers', '~> 6.2'
-  
-  gem 'redis', '~> 5.3'
+  gem "shoulda-matchers", "~> 6.2"
 
-  gem 'vcr', '~> 6.1'
+  gem "redis", "~> 5.3"
 
-  gem 'webmock', '~> 3.24'
+  gem "vcr", "~> 6.1"
 
+  gem "webmock", "~> 3.24"
 end
 
 
@@ -91,14 +90,14 @@ gem "tailwindcss-rails", "~> 4.2"
 
 gem "devise", "~> 4.9"
 
-gem 'rack-cors'
+gem "rack-cors"
 
-gem 'devise-jwt'
+gem "devise-jwt"
 
-gem 'jsonapi-serializer'
+gem "jsonapi-serializer"
 
-gem 'dotenv'
+gem "dotenv"
 
-gem 'httparty', '~> 0.20.0'
+gem "httparty", "~> 0.20.0"
 
-gem 'redis', '~> 5.3'
+gem "redis", "~> 5.3"

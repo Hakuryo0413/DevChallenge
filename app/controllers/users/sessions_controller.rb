@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_with(resource, _opts = {})
     render json: {
-      status: {code: 200, message: 'Logged in sucessfully.'},
+      status: { code: 200, message: "Logged in sucessfully." },
       data: resource
     }, status: :ok
   end
@@ -26,5 +26,4 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
- 
 end
