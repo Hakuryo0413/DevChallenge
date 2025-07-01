@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    environment:
+          POSTGRES_USER: leetcode
+          POSTGRES_PASSWORD: leetcode
+          POSTGRES_DB: leetcode
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U leetcode"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    # Redis is limited to 7.2-bookworm due to licencing change
+    # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
+    image: redis:7.2-bookworm
+    expose:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: always
+  myapp-web:
+      build: .
+      command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+      environment:
+        DB_HOST: db
+        DB_NAME: leetcode
+        DB_USERNAME: leetcode
+        DB_PASSWORD: leetcode
+        SECRET_KEY_BASE: fd5b0eb22db28b43af48ebc42324a85aee069dc648bfd40fc50ade87d107a6755a6d0da43e70ef0a81ee3d51fc4f71ecd3a0e7c51d45b4fbe8ab4905d72f7309
+      volumes:
+        - .:/app:cached
+      ports:
+        - "3000:3000"
+      depends_on:
+        db:
+          condition: service_healthy
+        redis:
+          condition: service_healthy
+
+volumes:
+  postgres-db-volume:
