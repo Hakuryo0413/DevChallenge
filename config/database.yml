@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: airbnb1_production
-  username: airbnb1
-  password: <%= ENV["AIRBNB1_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>

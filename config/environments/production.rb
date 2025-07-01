@@ -98,6 +98,7 @@ Rails.application.configure do
   # TODO PRODUCTION
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
+  config.force_ssl = false
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com

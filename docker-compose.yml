@@ -39,7 +39,7 @@ services:
         DB_NAME: leetcode
         DB_USERNAME: leetcode
         DB_PASSWORD: leetcode
-        SECRET_KEY_BASE: fd5b0eb22db28b43af48ebc42324a85aee069dc648bfd40fc50ade87d107a6755a6d0da43e70ef0a81ee3d51fc4f71ecd3a0e7c51d45b4fbe8ab4905d72f7309
+        SECRET_KEY_BASE: <%= ENV["SECRET_KEY_BASE"] %>
       volumes:
         - .:/app:cached
       ports:
