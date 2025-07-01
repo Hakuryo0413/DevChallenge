@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&fields=*&wait=true
+    body:
+      encoding: UTF-8
+      string: '{"language_id":71,"source_code":"print(2 + 3)","stdin":""}'
+    headers:
+      X-Rapidapi-Key:
+      - "<JUDGE0_API_KEY>"
+      X-Rapidapi-Host:
+      - judge0-ce.p.rapidapi.com
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - judge0-ce.p.rapidapi.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Jul 2025 10:07:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"508c3405e0a7112416e36a5d8eed9273"
+      Cf-Ray:
+      - 958518706d39ce2a-SIN
+      Access-Control-Expose-Headers:
+      - X-Judge0-Region
+      X-Request-Id:
+      - 38abd275-a0f6-45d2-b509-c9ceb36f30b6
+      X-Judge0-Region:
+      - AS
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=1793&min_rtt=1784&rtt_var=517&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2977&recv_bytes=1358&delivery_rate=1595628&cwnd=252&unsent_bytes=0&cid=a768f86111819a56&ts=575&x=0"
+      Vary:
+      - Origin, Accept-Encoding
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=QMsonQXJZJYwBPrRhZycJDYNqxP8u0NrRVj5nlT%2BV2TlW%2FpepkQdrwt9ORm79wY76D77UihQHjuzOuqEchD19yZEZvo8F1OkCBYUldByoRWETUkyku7VAFadB0XrTq04"}],"group":"cf-nel","max_age":604800}'
+      X-Runtime:
+      - '0.003469'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Judge0-Tat:
+      - '534'
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      X-Ratelimit-Batched-Submissions-Limit:
+      - '50'
+      X-Ratelimit-Batched-Submissions-Remaining:
+      - '50'
+      X-Ratelimit-Batched-Submissions-Reset:
+      - '2419'
+      X-Ratelimit-Submissions-Limit:
+      - '50'
+      X-Ratelimit-Submissions-Remaining:
+      - '9'
+      X-Ratelimit-Submissions-Reset:
+      - '2419'
+      X-Ratelimit-Rapid-Free-Plans-Hard-Limit-Limit:
+      - '500000'
+      X-Ratelimit-Rapid-Free-Plans-Hard-Limit-Remaining:
+      - '499844'
+      X-Ratelimit-Rapid-Free-Plans-Hard-Limit-Reset:
+      - '1471219'
+      Server:
+      - RapidAPI-1.2.8
+      X-Rapidapi-Version:
+      - 1.2.8
+      X-Rapidapi-Region:
+      - AWS - ap-southeast-1
+      X-Rapidapi-Request-Id:
+      - f3aae11e462ebfda45ec002ae7853fa12a3c348277649abc86e38f1713a8ea2b
+    body:
+      encoding: ASCII-8BIT
+      string: '{"source_code":"print(2 + 3)","language_id":71,"stdin":"","expected_output":null,"stdout":"5\n","status_id":3,"created_at":"2025-07-01T10:07:16.686Z","finished_at":"2025-07-01T10:07:16.920Z","time":"0.008","memory":3300,"stderr":null,"token":"32cb48f9-9ba0-41d6-b6df-a9c88184f7b8","number_of_runs":1,"cpu_time_limit":"5.0","cpu_extra_time":"1.0","wall_time_limit":"10.0","memory_limit":256000,"stack_limit":64000,"max_processes_and_or_threads":128,"enable_per_process_and_thread_time_limit":false,"enable_per_process_and_thread_memory_limit":false,"max_file_size":5120,"compile_output":null,"exit_code":0,"exit_signal":null,"message":null,"wall_time":"0.031","compiler_options":null,"command_line_arguments":null,"redirect_stderr_to_stdout":false,"callback_url":null,"additional_files":null,"enable_network":false,"post_execution_filesystem":"UEsDBBQACAAIAOhQ4VoAAAAAAAAAAAwAAAAJABwAc2NyaXB0LnB5VVQJAANUs2NoVLNjaHV4CwABBOgDAAAE6AMAACsoyswr0TBS0FYw1gQAUEsHCJUrHuUOAAAADAAAAFBLAQIeAxQACAAIAOhQ4VqVKx7lDgAAAAwAAAAJABgAAAAAAAEAAACkgQAAAABzY3JpcHQucHlVVAUAA1SzY2h1eAsAAQToAwAABOgDAABQSwUGAAAAAAEAAQBPAAAAYQAAAAAA","status":{"id":3,"description":"Accepted"},"language":{"id":71,"name":"Python
+        (3.8.1)"}}'
+  recorded_at: Tue, 01 Jul 2025 10:07:17 GMT
+recorded_with: VCR 6.1.0

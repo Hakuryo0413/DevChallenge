@@ -54,6 +54,11 @@ group :development, :test do
 
   gem 'shoulda-matchers', '~> 6.2'
 
+  gem 'redis', '~> 5.3'
+
+  gem 'vcr', '~> 6.1'
+
+  gem 'webmock', '~> 3.24'
 end
 
 group :development do
@@ -70,6 +75,12 @@ group :development do
   gem 'simplecov', require: false
 
   gem 'shoulda-matchers', '~> 6.2'
+  
+  gem 'redis', '~> 5.3'
+
+  gem 'vcr', '~> 6.1'
+
+  gem 'webmock', '~> 3.24'
 
 end
 
@@ -87,3 +98,7 @@ gem 'devise-jwt'
 gem 'jsonapi-serializer'
 
 gem 'dotenv'
+
+gem 'httparty', '~> 0.20.0'
+
+gem 'redis', '~> 5.3'
