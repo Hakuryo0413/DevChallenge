@@ -1,0 +1,19 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+
+def parse_input():
+    lines = sys.stdin.read().splitlines()
+    nums = eval(lines[0])
+    target = int(lines[1])
+    return nums, target
+
+def main():
+    nums, target = parse_input()
+    sol = Solution()
+    result = sol.twoSum(nums, target)
+    print(json.dumps(result, separators=(",", ":")), end="")
+
+if __name__ == "__main__":
+    main()
+
