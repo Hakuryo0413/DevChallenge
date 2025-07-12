@@ -33,8 +33,9 @@ module Api
             end
 
             def destroy
-                # challenge = Challenge.find(params[:id])
-                if @question.destroy
+                if @question.nil?
+                    render json: { message: "Question not found" }, status: :not_found
+                elsif @question.destroy
                     render json: { message: "Deleted successfully", data: @question }, status: :ok
                 else
                     render json: { message: "Failed to delete the resource.", data: @question.errors.full_messages }, status: :unprocessable_entity
@@ -44,7 +45,7 @@ module Api
 
             private
                 def set_challenge
-                    @challenge = Challenge.find(params[:challenge_id])
+                    @challenge = Challenge.find_by(id: params[:challenge_id])
                 end
 
                 def set_question

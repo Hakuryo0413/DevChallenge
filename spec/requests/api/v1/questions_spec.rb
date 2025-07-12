@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Questions API", type: :request do
-  let(:admin_email) { ENV["ADMIN_EMAIL"] || "admin@example.com" }
+  let(:admin_email) { ENV["ADMIN_EMAIL"] || "admin@gmail.com" }
   let(:admin) { create(:user, email: admin_email) }
   let(:user) { create(:user) }
   let(:challenge) { create(:challenge, user: user) }
@@ -56,6 +56,10 @@ RSpec.describe "Questions API", type: :request do
 
         expect(response).to have_http_status(:ok)
       end
+    end
+    context "when question is not found" do
+      before { delete "/api/v1/challenges/#{challenge.id}/questions/999999", headers: headers }
+      it_behaves_like "not found response"
     end
 
     context "when delete fails" do

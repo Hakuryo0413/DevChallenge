@@ -31,7 +31,7 @@ module Api
               source_code: @submission.code,
               stdin: tc.input
             )
-
+            puts judge_result
             output = judge_result.body["stdout"].to_s.strip
             expected = tc.expect_output.to_s.strip
             passed = output == expected
